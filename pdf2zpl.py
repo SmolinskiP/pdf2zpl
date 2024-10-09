@@ -3,16 +3,16 @@ from PIL import Image
 import math
 import serial
 
-#Podaj ścieżkę PDF oraz lokalizację popplera
+# Provide the PDF path and Poppler location
 images = convert_from_path('et.pdf', poppler_path=r"C:\poppler-24.08.0\Library\bin")
 
-# Określ wymiary etykiety w centymetrach
-label_width_cm = 10.16   # np. 10.16 cm (4 cale)
-label_height_cm = 15.24  # np. 15.24 cm (6 cali)
+# Specify label dimensions in centimeters
+label_width_cm = 10.16   # e.g., 10.16 cm (4 inches)
+label_height_cm = 15.24  # e.g., 15.24 cm (6 inches)
 dpi = 300
 
 #____________________________________________
-#Poniżej raczej niczego nie ruszamy oprócz ostatniej komendy wysyłającej polecenie do drukarki!
+# Below this line, it's better not to modify anything except the last command sending the instruction to the printer!
 #____________________________________________
 
 label_width_inch = label_width_cm / 2.54
@@ -88,35 +88,35 @@ def send_zpl_over_serial(zpl_command, serial_port, baudrate=9600):
 
 #-----------------------------------------------------------------
 """
-Wysyła kod ZPL do drukarki Zebra przez Ethernet.
+Sends ZPL code to a Zebra printer via Ethernet.
 
-:param zpl_command: Kod ZPL do wysłania (ciąg znaków).
-:param printer_ip: Adres IP drukarki (ciąg znaków).
-:param port: Port TCP drukarki (domyślnie 9100).
+:param zpl_command: ZPL code to send (string).
+:param printer_ip: Printer IP address (string).
+:param port: Printer TCP port (default 9100).
 
-PRZYKŁAD UŻYCIA:
+EXAMPLE USAGE:
 send_zpl_over_ethernet(zpl_command, "192.168.0.1")
 """
 #-----------------------------------------------------------------
 """
-Wysyła kod ZPL do drukarki Zebra port szeregowy.
+Sends ZPL code to a Zebra printer via a serial port.
 
-:param zpl_command: Kod ZPL do wysłania (ciąg znaków).
-:param serial_port: Nazwa portu szeregowego (np. 'COM1' na Windows lub '/dev/ttyUSB0' na Linux).
-:param baudrate: Prędkość transmisji (domyślnie 9600).
+:param zpl_command: ZPL code to send (string).
+:param serial_port: Name of the serial port (e.g., 'COM1' on Windows or '/dev/ttyUSB0' on Linux).
+:param baudrate: Transmission speed (default 9600).
 
-PRZYKŁAD UŻYCIA:
+EXAMPLE USAGE:
 send_zpl_over_serial(zpl_command, "COM3")
 """
 #-----------------------------------------------------------------
 """
-Zapisuje kod ZPL do pliku.
+Saves ZPL code to a file.
 
-:param zpl_command: Kod ZPL do zapisania (ciąg znaków).
-:param filename: Nazwa pliku do zapisania (domyślnie 'etykieta.zpl').
+:param zpl_command: ZPL code to save (string).
+:param filename: File name to save to (default 'etykieta.zpl').
 
-PRZYKŁAD UŻYCIA:
-save_zpl_to_file(zpl_command, r'X:\Sciezka\do\pliku\moja_etykieta.zpl')
+EXAMPLE USAGE:
+save_zpl_to_file(zpl_command, r'X:\\Path\\to\\file\\my_label.zpl')
 """
 #-----------------------------------------------------------------
 
