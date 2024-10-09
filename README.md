@@ -1,56 +1,56 @@
 
-# Skrypt do drukowania etykiet Zebra
+# Zebra Label Printer Script
 
-Ten skrypt konwertuje plik PDF na format ZPL (Zebra Programming Language) i wysyła go do drukarki etykiet Zebra. Zawiera funkcje do:
+This script converts a PDF file to ZPL (Zebra Programming Language) format and sends it to a Zebra label printer. It includes functionality to:
 
-- Konwersji PDF na obraz
-- Zmiany rozmiaru obrazu do wymiarów etykiety
-- Konwersji obrazu na format ZPL
-- Wysyłania kodu ZPL przez Ethernet lub port szeregowy
-- Zapisania kodu ZPL do pliku
+- Convert PDF to an image
+- Resize the image to fit label dimensions
+- Convert the image to ZPL format
+- Send the ZPL code via Ethernet or serial port
+- Save the ZPL code to a file
 
-## Wymagania
+## Requirements
 
 - Python 3.x
-- Zainstaluj wymagane biblioteki używając:
+- Install required libraries using:
   ```bash
   pip install pdf2image pillow pyserial
   ```
-- Poppler dla Windows (dodaj do `PATH` lub wskaż `poppler_path`)
+- Poppler for Windows (add to `PATH` or specify `poppler_path`)
 
-## Użycie
+## Usage
 
-1. **Konwersja PDF i zapisanie ZPL do pliku**:
+1. **Convert PDF and Save ZPL to File**:
    ```python
-   save_zpl_to_file(zpl_command, 'moja_etykieta.zpl')
+   save_zpl_to_file(zpl_command, 'my_label.zpl')
    ```
 
-2. **Wysyłanie ZPL do drukarki przez Ethernet**:
+2. **Send ZPL to Printer via Ethernet**:
    ```python
    send_zpl_over_ethernet(zpl_command, '192.168.0.1')
    ```
 
-3. **Wysyłanie ZPL do drukarki przez port szeregowy**:
+3. **Send ZPL to Printer via Serial Port**:
    ```python
    send_zpl_over_serial(zpl_command, 'COM3')
    ```
 
-## Wymiary Etykiety
+## Label Dimensions
 
-- Domyślna szerokość etykiety: 10.16 cm (4 cale)
-- Domyślna wysokość etykiety: 15.24 cm (6 cali)
+- Default label width: 10.16 cm (4 inches)
+- Default label height: 15.24 cm (6 inches)
 - DPI: 300
 
-Możesz dostosować te wymiary, zmieniając wartości `label_width_cm`, `label_height_cm` i `dpi` w skrypcie.
+You can adjust these dimensions by modifying the `label_width_cm`, `label_height_cm`, and `dpi` values in the script.
 
-## Uwagi
+## Notes
 
-- Upewnij się, że adres IP drukarki i konfiguracja portu szeregowego są poprawne przed wysyłaniem danych.
-- Skrypt przetwarza tylko pierwszą stronę pliku PDF.
+- Ensure the printer's IP address and serial port configuration are correct before sending data.
+- The script processes only the first page of the PDF.
 
-## Przykład
+## Example
 
-Konwertuj i wyślij etykietę PDF przez Ethernet:
+Convert and send a PDF label via Ethernet:
 ```python
 send_zpl_over_ethernet(zpl_command, '192.168.0.1')
 ```
