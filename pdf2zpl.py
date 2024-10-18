@@ -4,7 +4,7 @@ import math
 import serial
 
 # Provide the PDF path and Poppler location
-images = convert_from_path('et.pdf', poppler_path=r"C:\poppler-24.08.0\Library\bin")
+images = convert_from_path('X:\\path\\to\\document.pdf', poppler_path=r"C:\poppler-24.08.0\Library\bin")
 
 # Specify label dimensions in centimeters
 label_width_cm = 10.16   # e.g., 10.16 cm (4 inches)
@@ -56,9 +56,9 @@ bytes_per_row = width // 8
 total_bytes = bytes_per_row * height
 zpl_command = f"^XA\n^FO0,0\n^GFA,{total_bytes},{total_bytes},{bytes_per_row},\n{zpl_data}^FS\n^XZ"
 
-
-with open('etykieta.zpl', 'w') as f:
-    f.write(zpl_command)
+#DEBUG
+#with open('etykieta.zpl', 'w') as f:
+#    f.write(zpl_command)
 
 def send_zpl_over_ethernet(zpl_command, printer_ip, port=9100):
     try:
